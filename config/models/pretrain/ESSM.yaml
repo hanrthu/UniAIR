@@ -1,0 +1,44 @@
+resume: null
+model:
+  model_type: ESSM_pretune
+  esm_type: 650M
+  output_dim: 1
+  pair_dim: 40
+  lora_tune: False
+  lora_rank: 16
+  lora_alpha: 32
+  fix_lms: True
+  representation_layer: 33
+  dist_dim: 40
+  pre_transform_cfg:
+    resolution: backbone+CB
+  coformer: 
+    embed_dim: 320
+    pair_dim: 40
+    num_blocks: 6
+    num_heads: 20
+    use_rot_emb: true
+    attn_qkv_bias: false
+    attention_dropout: 0.1
+    transition_dropout: 0.0
+    residual_dropout: 0.1
+    transition_factor: 4
+    use_flash_attn: false
+    
+train:
+  temperature: 0.2
+  max_iters: 30_000
+  val_freq: 1000
+  seed: 2024
+  max_grad_norm: 100.0
+  optimizer:
+    type: adam
+    lr: 3.e-4
+    weight_decay: 0.0
+    beta1: 0.9
+    beta2: 0.999
+  scheduler:
+    type: plateau
+    factor: 0.8
+    patience: 5
+    min_lr: 1.e-6

@@ -1,0 +1,16 @@
+output_dir: './outputs/bench_her2/RDE_ens_test'
+gpus:
+  # - 0
+  # - 1
+  # - 2
+  # - 4
+  - 5
+  # - 6
+
+ckpts: null
+
+
+run_name: 'test'
+wandb: False
+run_type: test
+num_folds: 1

@@ -1,0 +1,28 @@
+resume: null
+model:
+  model_type: ppiformer
+  encoder_checkpoint: ./pretrained_encoders/ppiformer/ppiformer_encoder.pt
+  classifier_checkpoint: ./pretrained_encoders/ppiformer/ppiformer_classifier.pt
+  pre_transform_cfg:
+    resolution: backbone+CB
+    coord_fill_value: 0.00001
+    divide_coords_by: 4.0
+    intra_inter_edge_features: True
+    mask_mutation_transform: True
+
+train:
+  max_iters: 30_000
+  val_freq: 1000
+  seed: 2024
+  max_grad_norm: 100.0
+  optimizer:
+    type: adam
+    lr: 1.e-3
+    weight_decay: 0.0
+    beta1: 0.9
+    beta2: 0.999
+  scheduler:
+    type: plateau
+    factor: 0.8
+    patience: 5
+    min_lr: 1.e-6

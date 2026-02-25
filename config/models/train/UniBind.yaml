@@ -1,0 +1,24 @@
+resume: null
+model:
+  model_type: unibind
+  max_relpos: 32
+  pair_feat_dim: 64
+  node_feat_dim: 224
+  geo_attn_num_layers: 3
+  twotrack: True
+train:
+  max_iters: 30_000
+  val_freq: 1000
+  seed: 2024
+  max_grad_norm: null
+  optimizer:
+    type: adam
+    lr: 1.e-4
+    beta1: 0.9
+    beta2: 0.999
+  scheduler:
+      type: plateau
+      factor: 0.8
+      patience: 5
+      min_lr: 1.e-6
+

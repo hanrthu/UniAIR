@@ -1,0 +1,18 @@
+epochs: 200
+patience: 50
+# output_dir: './outputs/fig3/rde_transfer_openfold_LASSA2510C_loadreadoutfix_lossglobal/'
+output_dir: './outputs/fig3/ppiformer_transfer_openfold_SKEMPIv2/'
+gpus:
+  # - 0
+  # - 1
+  # - 2
+  # - 3
+  # - 4
+  # - 5
+  # - 6
+  - 7
+ckpt: null
+run_name: 'ppiformer_transfer_openfold_SKEMPI_loadreadoutfix_lossglobal'
+wandb: False
+run_type: transfer
+num_folds: 3

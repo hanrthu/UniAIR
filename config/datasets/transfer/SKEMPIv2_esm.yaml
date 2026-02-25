@@ -1,0 +1,30 @@
+dataset_type: 'des_mutation_dataset'
+max_length: 256
+n_neighbors: 32
+cols_label: ['DDG']
+col_valid_chains: 'valid_chains'
+col_chainids: 'chainids'
+col_partner: 'Partners(A_B)'
+col_mutation: 'mutation'
+col_protein: 'Protein'
+col_wt: 'path_wt'
+col_pdb: 'pdb_id'
+col_pred: 'path_esm'
+df_path: './datasets/SKEMPIv2/splits/skempi_v2_transfer_3fold.csv'
+data_root: './datasets/SKEMPIv2/'
+batch_size: 32
+num_workers: 4
+pin_memory: True
+cache_dir: './cache/SKEMPIv2_transfer_des_esm'
+#col_group: 'fold_0'
+loss_types:
+  - regression
+loss_weights:
+  - 1.0
+transform:
+  - type: select_trans_atom
+    resolution: full
+  - type: selected_region_fixed_size_patch
+    select_attr: mut_flag
+    patch_size: 128
+  - type: subtract_center_of_mass

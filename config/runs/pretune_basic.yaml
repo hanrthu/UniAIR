@@ -1,0 +1,19 @@
+# Scripts for pretraining ESSM
+epochs: 100
+patience: 30
+output_dir: './outputs/ESSM/pretrain_3losses/'
+gpus:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+ckpt: null
+
+run_name: 'ESSM_pretune'
+wandb: False
+run_type: pretune
+num_folds: 1

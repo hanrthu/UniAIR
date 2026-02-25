@@ -1,0 +1,19 @@
+# Scripts for training UniAIR
+epochs: 150
+patience: 60
+output_dir: './outputs/UniAIR_train/'
+gpus:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+ckpt: null
+
+run_name: 'SKEMPIv2'
+wandb: False
+run_type: train
+num_folds: 3

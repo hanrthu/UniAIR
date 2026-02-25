@@ -1,0 +1,41 @@
+resume: null
+model:
+  model_type: uniair_meanens
+  hidden_dim: 128
+  fix_backbone: False
+  model_dirs:
+    gearbind:
+      - ./expert_ckpts/gearbind/gearbind_fold0.ckpt
+      - ./expert_ckpts/gearbind/gearbind_fold1.ckpt
+      - ./expert_ckpts/gearbind/gearbind_fold2.ckpt
+    rde:
+      - ./expert_ckpts/rde/rde_fold0.ckpt
+      - ./expert_ckpts/rde/rde_fold1.ckpt
+      - ./expert_ckpts/rde/rde_fold2.ckpt
+    ppiformer:
+      - ./expert_ckpts/ppiformer/ppiformer_fold0.ckpt
+      - ./expert_ckpts/ppiformer/ppiformer_fold1.ckpt
+      - ./expert_ckpts/ppiformer/ppiformer_fold2.ckpt
+    essm:
+      - ./expert_ckpts/essm/essm_fold0.ckpt
+      - ./expert_ckpts/essm/essm_fold1.ckpt
+      - ./expert_ckpts/essm/essm_fold2.ckpt
+
+
+train:
+  temperature: 0.2
+  max_iters: 30_000
+  val_freq: 1000
+  seed: 2024
+  max_grad_norm: 100.0
+  optimizer:
+    type: adam
+    lr: 3.e-4
+    weight_decay: 0.0
+    beta1: 0.9
+    beta2: 0.999
+  scheduler:
+    type: plateau
+    factor: 0.8
+    patience: 5
+    min_lr: 1.e-6

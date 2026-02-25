@@ -1,0 +1,13 @@
+output_dir: './outputs/fig4/RDE_test_lassa/2510Ctest'
+gpus:
+  - 5
+
+
+# UniAIR
+# ckpts: null
+
+
+run_name: 'RDE_test_lassa_all'
+wandb: False
+run_type: test
+num_folds: 1

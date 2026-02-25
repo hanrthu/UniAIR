@@ -1,0 +1,31 @@
+dataset_type: 'wo_mutation_dataset'
+max_length: 256
+n_neighbors: 32
+cols_label: ['DDG']
+col_valid_chains: 'valid_chains'
+col_chainids: 'chainids'
+col_partner: 'Partners(A_B)'
+col_mutation: 'mutation'
+col_protein: 'Protein'
+col_wt: 'path_wt'
+col_pdb: 'pdb_id'
+df_path: './datasets/TCRen/splits/TCRen_test.csv'
+# df_path: './datasets/SKEMPIv2/splits/tmp.csv'
+data_root: './datasets/TCRen/'
+batch_size: 8
+num_workers: 4
+pin_memory: True
+cache_dir: './cache/TCRen'
+#col_group: 'fold_0'
+loss_types:
+  - regression
+loss_weights:
+  - 1.0
+transform:
+  - type: select_atom
+    resolution: full
+  - type: selected_region_fixed_size_patch
+    select_attr: mut_flag
+    patch_size: 128
+  # - type: mask_mutation_transform
+  #   vocab_size: 20

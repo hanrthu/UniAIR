@@ -1,0 +1,32 @@
+resume: null
+model:
+  model_type: latent_adapter
+  encoder_type: rde_ddg
+  encoder_dirs: 
+      - ./expert_ckpts/rde/rde_fold0.ckpt
+      - ./expert_ckpts/rde/rde_fold1.ckpt
+      - ./expert_ckpts/rde/rde_fold2.ckpt
+  latent_dim: 128
+  hidden_dim: 128
+  n_heads: 16
+  n_blocks: 6
+  alpha: 0.25
+  transfer_dirs: null
+
+
+train:
+  max_iters: 30_000
+  val_freq: 1000
+  seed: 2024
+  max_grad_norm: 100.0
+  optimizer:
+    type: adam
+    lr: 3.e-4
+    weight_decay: 0.0
+    beta1: 0.9
+    beta2: 0.999
+  scheduler:
+    type: plateau
+    factor: 0.8
+    patience: 5
+    min_lr: 1.e-6

@@ -1,0 +1,10 @@
+col_group: 'dataset'
+output_dir: ./outputs/rde_ddg/dms/
+gpus:
+  - 6
+ckpt: null
+
+
+run_name: 'UniPPI_Lassa_256A_dms'
+wandb: False
+run_type: test

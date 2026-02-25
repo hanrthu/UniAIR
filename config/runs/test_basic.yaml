@@ -1,0 +1,14 @@
+output_dir: './outputs/fig2/bench_tcrpmhc/UniAIR_meanens'
+gpus:
+  - 6
+
+ckpts: null
+# - ./expert_ckpts/essm/essm_fold0.ckpt
+# - ./expert_ckpts/essm/essm_fold1.ckpt
+# - ./expert_ckpts/essm/essm_fold2.ckpt
+
+
+run_name: 'test'
+wandb: False
+run_type: test
+num_folds: 1

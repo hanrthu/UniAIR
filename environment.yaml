@@ -1,0 +1,40 @@
+name: unippi_pytorch2_0_1
+channels:
+  - pytorch3d
+  - pytorch
+  - conda-forge
+  - nvidia
+  - pyg
+  - defaults
+dependencies:
+  - python=3.11.5
+  - pytorch::pytorch=2.0.1
+  - pytorch::pytorch-cuda=11.8
+  - llvm-openmp<16  # https://github.com/pytorch/pytorch/issues/99625
+  - einops=0.6.1
+  - pytorch-lightning
+  - pandas==1.5.3
+  - diskcache=5.4.0
+  - dm-tree=0.1.7
+  - fire=0.5.0
+  - numpy=1.23.5
+  - scikit-learn=1.3.0
+  - pip
+  - gpustat
+  - wandb
+  - easydict=1.9
+  - matplotlib=3.8.0
+  - seaborn
+  - pytorch_geometric
+  - pytorch-scatter
+  - pytorch-sparse
+  - pytorch-cluster
+  - pip:
+    - tree==0.2.4
+    - biopython==1.83 
+    - lmdb==1.4.1
+    - graphein==1.7.7
+    - ipykernel
+    - cmake
+    - equiformer-pytorch git+https://github.com/anton-bushuiev/equiformer-pytorch.git@main
+    - -i https://pypi.tuna.tsinghua.edu.cn/simple

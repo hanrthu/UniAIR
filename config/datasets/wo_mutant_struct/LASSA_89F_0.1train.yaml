@@ -1,0 +1,29 @@
+dataset_type: 'wo_mutation_dataset'
+max_length: 256
+n_neighbors: 32
+cols_label: ['DDG']
+col_valid_chains: 'valid_chains'
+col_chainids: 'chainids'
+col_partner: 'Partners(A_B)'
+col_mutation: 'mutation'
+col_protein: 'Protein'
+col_wt: 'path_wt'
+col_pdb: 'pdb_id'
+# df_path: './datasets/DMS/LASSA/splits/3train_2val.csv'
+df_path: './datasets/DMS/LASSA/splits/89F_0.1train.csv'
+data_root: './datasets/DMS/LASSA/'
+batch_size: 32
+num_workers: 4
+pin_memory: True
+# cache_dir: './cache/lassa_new'
+#col_group: 'fold_0'
+loss_types:
+  - regression
+loss_weights:
+  - 1.0
+transform:
+  - type: select_atom
+    resolution: full
+  - type: selected_region_fixed_size_patch
+    select_attr: mut_flag
+    patch_size: 128

@@ -1,0 +1,43 @@
+resume: null
+model:
+  model_type: gearbind
+  # checkpoint: './pretrained_encoders/gearbind/gearbind.pth'
+  checkpoint: null
+  num_mlp_layer: 2
+  model_config:
+    input_dim: 58
+    hidden_dims: [128, 128, 128, 128]
+    batch_norm: True
+    short_cut: True
+    concat_hidden: True
+    num_relation: 7
+    edge_input_dim: 59
+    num_angle_bin: 8
+    use_attn: True
+    readout: 'mean'
+  pre_transform_cfg:
+    spatial_config:
+      radius: 5.0
+      min_distance: 5
+    knn_config:
+      k: 10
+      min_distance: 5
+    sequential_config:
+      max_distance: 2
+
+train:
+  max_iters: 30_000
+  val_freq: 1000
+  seed: 2024
+  max_grad_norm: 100.0
+  optimizer:
+    type: adam
+    lr: 3.e-4
+    weight_decay: 0.0
+    beta1: 0.9
+    beta2: 0.999
+  scheduler:
+    type: plateau
+    factor: 0.8
+    patience: 5
+    min_lr: 1.e-6

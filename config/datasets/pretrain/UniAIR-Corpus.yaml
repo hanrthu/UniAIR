@@ -1,0 +1,28 @@
+dataset_type: 'unialign_dataset'
+max_length: 256
+n_neighbors: 32
+cols_label: ['dG']
+col_valid_chains: 'valid_chains'
+col_chainids: 'chainids'
+col_partner: 'Partners(A_B)'
+col_protein: 'Protein'
+col_struct: 'path'
+col_pdb: 'pdb_id'
+df_path: './datasets/UniAIR-Corpus/splits/UniAIR-Corpus.csv'
+data_root: './datasets/UniAIR-Corpus/'
+batch_size: 16
+num_workers: 8
+pin_memory: True
+cache_dir: './cache/UniAIR-Corpus_pretrain'
+#col_group: 'fold_0'
+loss_types:
+  - regression
+  - regression
+loss_weights:
+  - 1.0
+  - 1.0
+transform:
+  - type: select_atom
+    resolution: full
+  - type: interface_fixed_size_patch
+    patch_size: 128
