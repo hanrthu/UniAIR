@@ -124,7 +124,7 @@ We support multiple models in this framework, including ESSM, RDE, PPIformer, Ge
 python run.py test --model_config ./config/models/train/UniAIR.yaml --data_config ./config/datasets/with_mutant/SKEMPIv2.yaml --run_config ./config/runs/test_basic.yaml
 ```
 
-We also provide three-fold experts trained with SKEMPIv2, and they can be downloaded through 🤗Huggingface: [/Jesse7/UniAIR](https://huggingface.co/Jesse7/UniAIR). Download these weights at place them at `./expert_ckpts` folder. Then, you can train MoFPE to combine experts.
+We also provide three-fold experts trained with SKEMPIv2, and they can be downloaded through 🤗Huggingface: [/Jesse7/UniAIR_model](https://huggingface.co/Jesse7/UniAIR). Download these weights at place them at `./expert_ckpts` folder. Then, you can train MoFPE to combine experts.
 
 We recommend to download the trained experts and place them as follows:
 ```
