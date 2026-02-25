@@ -107,7 +107,7 @@ The number of samples of the original dataset is shown below:
 | Downstream | KRAS | ∆∆G | - | 1 |
 
 
-## 🚀 Evaluation on the SKEMPIv2 datasets
+## 🚀 Evaluation on the SKEMPIv2 and TCRen Benchmark no.1 datasets
 The performance of 3-fold cross validation on UniAIR reaches state-of-the-art, and here is the comparison:
 <img src="./assets/results.png" alt="Results on SKEMPIv2" width="800">
 
@@ -124,7 +124,7 @@ We support multiple models in this framework, including ESSM, RDE, PPIformer, Ge
 python run.py test --model_config ./config/models/train/UniAIR.yaml --data_config ./config/datasets/with_mutant/SKEMPIv2.yaml --run_config ./config/runs/test_basic.yaml
 ```
 
-We also provide three-fold experts trained with SKEMPIv2, and they can be downloaded through 🤗Huggingface: [/Jesse7/UniAIR_model](https://huggingface.co/Jesse7/UniAIR). Download these weights at place them at `./expert_ckpts` folder. Then, you can train MoFPE to combine experts.
+We also provide three-fold experts trained with SKEMPIv2, and they can be downloaded through 🤗Huggingface: [/Jesse7/UniAIR_model](https://huggingface.co/Jesse7/UniAIR). Download these weights at place them at `./expert_ckpts` folder. Then, you can train MoFPE to integrate multiple experts.
 
 We recommend to download the trained experts and place them as follows:
 ```
@@ -147,7 +147,7 @@ expert_ckpts
     └── rde_fold2.ckpt
 ```
 
-For each model, we have the same raw data preprocessing and model-specific pretransform. For detail, please refer to ./data/transforms/{model_name}.py
+For each model, we conduct the same raw data preprocessing and model-specific pretransform. For detail, please refer to ./data/transforms/{model_name}.py
 
 ### Run cross-validation training of UniAIR on SKEMPIv2.
 ```
@@ -162,7 +162,7 @@ python run.py test --model_config ./config/models/train/UniAIR.yaml --data_confi
 
 ## 🚀 Downstream applications for different tasks
 
-### Zero-shot mutation scanning on TCR-pMHC structures (with a three-expert UniAIR variant to speed up)
+### Zero-shot mutation scanning on TCR-pMHC structures (with a three-expert UniAIR variant)
 ### Option 1: via standard preprocessing and testing on xxx.csv
 ```
 python run.py test --model_config ./config/models/train/UniAIR_meanens.yaml --data_config ./config/datasets/wo_mutant/TCR-MHC_unsup.yaml
@@ -183,6 +183,10 @@ python run.py train --model_config ./config/models/train/ESSM.yaml --data_config
 python run.py transfer --model_config ./config/models/transfer/adapter.yaml --data_config ./datasets/transfer/SKEMPIv2_esm.yaml --run_config ./runs/transfer_basic.yaml
 ```
 
+### Pretrain the ESSM model
+```
+python run.py pretune --model_config ./config/models/pretrain/ESSM.yaml --data_config ./datasets/pretrain/UniAIR-Corpus.yaml --run_config ./runs/pretune_basic.yaml
+```
 
 
 
