@@ -42,7 +42,7 @@ pip install flash_attn-2.6.3+cu118torch2.0cxx11abiFALSE-cp311-cp311-linux_x86_64
 ```
 For the other three experts, we recommend to place their pretrained encoders as follows:
 ```
-pretrained_encoders
+trained_models
 ├── gearbind
 │   └── gearbind.pth
 ├── ppiformer
