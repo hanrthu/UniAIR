@@ -53,7 +53,7 @@ trained_models
 ```
 
 
-## 📖 Datasets and model weights for mutation effect on binding affinity prediction
+## 📚 Datasets and model weights for mutation effect on binding affinity prediction
 
 ### Dataset preprocessing
 In UniAIR, the datasets are processed and splitted into standardized format, including the headers as follows:
@@ -106,6 +106,11 @@ The number of samples of the original dataset is shown below:
 | Downstream | TCR-pHLA unsupervised | - | 86 | 86 |
 | Downstream | KRAS | ∆∆G | - | 1 |
 
+
+## 📖 Pretrain the ESSM model
+```
+python run.py pretune --model_config ./config/models/pretrain/ESSM.yaml --data_config ./datasets/pretrain/UniAIR-Corpus.yaml --run_config ./runs/pretune_basic.yaml
+```
 
 ## 🚀 Evaluation on the SKEMPIv2 and TCRen Benchmark no.1 datasets
 The performance of 3-fold cross validation on UniAIR reaches state-of-the-art, and here is the comparison:
@@ -163,11 +168,11 @@ python run.py test --model_config ./config/models/train/UniAIR.yaml --data_confi
 ## 🚀 Downstream applications for different tasks
 
 ### Zero-shot mutation scanning on TCR-pMHC structures (with a three-expert UniAIR variant)
-### Option 1: via standard preprocessing and testing on xxx.csv
+#### Option 1: via standard preprocessing and testing on xxx.csv
 ```
 python run.py test --model_config ./config/models/train/UniAIR_meanens.yaml --data_config ./config/datasets/wo_mutant/TCR-MHC_unsup.yaml
 ```
-### Option 2: via dms function directly (can select the chain and periods for the scanning)
+#### Option 2: via dms function directly (can select the chain and periods for the scanning)
 
 ```
 python run.py dms --data_config ./config/datasets/downstream/dms.yaml --run_config ./config/runs/dms_basic.yaml --input_dir ./datasets/DMS/LASSA/PDBs/7tyv_part_2510C.pdb --chain A --valid_chains A,a,D,E --partners Aa_DE --period "10,20;40,45"
@@ -181,11 +186,6 @@ python run.py train --model_config ./config/models/train/ESSM.yaml --data_config
 ### UniAIR-LT training on SKEMPIv2
 ```
 python run.py transfer --model_config ./config/models/transfer/adapter.yaml --data_config ./datasets/transfer/SKEMPIv2_esm.yaml --run_config ./runs/transfer_basic.yaml
-```
-
-### Pretrain the ESSM model
-```
-python run.py pretune --model_config ./config/models/pretrain/ESSM.yaml --data_config ./datasets/pretrain/UniAIR-Corpus.yaml --run_config ./runs/pretune_basic.yaml
 ```
 
 
