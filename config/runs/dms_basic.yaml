@@ -2,7 +2,7 @@ col_group: 'dataset'
 output_dir: ./outputs/rde_ddg/dms/
 gpus:
   - 6
-ckpt: null
+ckpts: null
 
 
 run_name: 'UniPPI_Lassa_256A_dms'

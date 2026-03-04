@@ -43,13 +43,10 @@ pip install flash_attn-2.6.3+cu118torch2.0cxx11abiFALSE-cp311-cp311-linux_x86_64
 For the other three experts, we recommend to place their pretrained encoders as follows:
 ```
 trained_models
-├── gearbind
-│   └── gearbind.pth
-├── ppiformer
-│   ├── classifier.pt
-│   └── encoder.pt
-├── RDE
-│   └── RDE.pt
+├── gearbind.pth
+├── classifier.pt
+├──encoder.pt
+└── RDE.pt
 ```
 
 
@@ -107,11 +104,6 @@ The number of samples of the original dataset is shown below:
 | Downstream | KRAS | ∆∆G | - | 1 |
 
 
-## 📖 Pretrain the ESSM model
-```
-python run.py pretune --model_config ./config/models/pretrain/ESSM.yaml --data_config ./datasets/pretrain/UniAIR-Corpus.yaml --run_config ./runs/pretune_basic.yaml
-```
-
 ## 🚀 Evaluation on the SKEMPIv2 and TCRen Benchmark no.1 datasets
 The performance of 3-fold cross validation on UniAIR reaches state-of-the-art, and here is the comparison:
 <img src="./assets/results.png" alt="Results on SKEMPIv2" width="800">
@@ -120,7 +112,7 @@ There are 6 options in this framework, including train, test, dms, transfer, tra
 ### Run cross-validation training of a single model on SKEMPIv2
 Training a single model, for example, ESSM.
 ```
-python run.py train --model_config ./config/models/train/ESSM.yaml --data_config ./config/datasets/wo_mutant/SKEMPIv2.yaml --run_config ./config/runs/train_basic.yaml                  
+python run.py train --model_config ./config/models/train/ESSM.yaml --data_config ./config/datasets/wo_mutant_struct/SKEMPIv2.yaml --run_config ./config/runs/train_basic.yaml                  
 ```
 We support multiple models in this framework, including ESSM, RDE, PPIformer, Gearbind, DDGPred, UniBind, ESM2, please refer to ./configs for their configuration. If you want to train another single expert, replace the --model_config parameter. If training models that require mutant structures, replace --data_config by ./config/datasets/with_mutant/SKEMPIv2.yaml.
 
@@ -170,7 +162,7 @@ python run.py test --model_config ./config/models/train/UniAIR.yaml --data_confi
 ### Zero-shot mutation scanning on TCR-pMHC structures (with a three-expert UniAIR variant)
 #### Option 1: via standard preprocessing and testing on xxx.csv
 ```
-python run.py test --model_config ./config/models/train/UniAIR_meanens.yaml --data_config ./config/datasets/wo_mutant/TCR-MHC_unsup.yaml
+python run.py test --model_config ./config/models/train/UniAIR_fast.yaml --data_config ./config/datasets/wo_mutant_struct/TCR-MHC_unsup.yaml
 ```
 #### Option 2: via dms function directly (can select the chain and periods for the scanning)
 
@@ -180,7 +172,7 @@ python run.py dms --data_config ./config/datasets/downstream/dms.yaml --run_conf
 
 ### Few-shot learning for escape prediction
 ```
-python run.py train --model_config ./config/models/train/ESSM.yaml --data_config ./config/datasets/wo_mutant/LASSA_89F_0.1train.yaml --run_config ./config/runs/train_basic.yaml                  
+python run.py train --model_config ./config/models/train/ESSM.yaml --data_config ./config/datasets/wo_mutant_struct/LASSA_89F_0.1train.yaml --run_config ./config/runs/train_basic.yaml                  
 ```
 
 ### UniAIR-LT training on SKEMPIv2
@@ -188,7 +180,10 @@ python run.py train --model_config ./config/models/train/ESSM.yaml --data_config
 python run.py transfer --model_config ./config/models/transfer/adapter.yaml --data_config ./datasets/transfer/SKEMPIv2_esm.yaml --run_config ./runs/transfer_basic.yaml
 ```
 
-
+## 📖 Pretrain the ESSM model
+```
+python run.py pretune --model_config ./config/models/pretrain/ESSM.yaml --data_config ./datasets/pretrain/UniAIR-Corpus.yaml --run_config ./runs/pretune_basic.yaml
+```
 
 
 

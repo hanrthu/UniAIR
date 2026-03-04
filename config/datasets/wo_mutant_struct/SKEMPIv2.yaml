@@ -9,7 +9,7 @@ col_mutation: 'mutation'
 col_protein: 'Protein'
 col_wt: 'path_wt'
 col_pdb: 'pdb_id'
-df_path: './datasets/SKEMPIv2/splits/skempi_v2_resplit_3fold.csv'
+df_path: './datasets/SKEMPIv2/splits/skempi_v2_3fold.csv'
 data_root: './datasets/SKEMPIv2/'
 batch_size: 16
 num_workers: 4

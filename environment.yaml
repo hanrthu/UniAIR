@@ -29,6 +29,7 @@ dependencies:
   - pytorch-scatter
   - pytorch-sparse
   - pytorch-cluster
+  - pymol-open-source
   - pip:
     - tree==0.2.4
     - biopython==1.83 
@@ -36,5 +37,8 @@ dependencies:
     - graphein==1.7.7
     - ipykernel
     - cmake
+    - setuptools==75.1.0
+    - transformers
+    - ninja
     - equiformer-pytorch git+https://github.com/anton-bushuiev/equiformer-pytorch.git@main
     - -i https://pypi.tuna.tsinghua.edu.cn/simple

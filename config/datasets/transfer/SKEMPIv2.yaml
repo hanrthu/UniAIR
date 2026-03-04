@@ -1,4 +1,4 @@
-dataset_type: 'des_mutation_dataset'
+dataset_type: 'with_mutation_dataset'
 max_length: 256
 n_neighbors: 32
 cols_label: ['DDG']

@@ -4,10 +4,6 @@ model:
   hidden_dim: 128
   fix_backbone: False
   model_dirs:
-    gearbind:
-      - ./expert_ckpts/gearbind/gearbind_fold0.ckpt
-      - ./expert_ckpts/gearbind/gearbind_fold1.ckpt
-      - ./expert_ckpts/gearbind/gearbind_fold2.ckpt
     rde:
       - ./expert_ckpts/rde/rde_fold0.ckpt
       - ./expert_ckpts/rde/rde_fold1.ckpt

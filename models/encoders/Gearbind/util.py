@@ -102,5 +102,5 @@ def sparse_coo_tensor(indices, values, size):
     """
     return torch_ext.sparse_coo_tensor_unsafe(indices, values, size)
 
-path = "/home/HR/UniPPI/extension"
+path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "extension")
 torch_ext = load_extension("torch_ext", [os.path.join(path, "torch_ext.cpp")])

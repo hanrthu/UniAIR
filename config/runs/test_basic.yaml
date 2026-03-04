@@ -1,14 +1,17 @@
-output_dir: './outputs/fig2/bench_tcrpmhc/UniAIR_meanens'
+output_dir: './outputs/fig2/bench_skempi/UniAIR'
 gpus:
   - 6
 
-ckpts: null
+# ckpts: null
 # - ./expert_ckpts/essm/essm_fold0.ckpt
 # - ./expert_ckpts/essm/essm_fold1.ckpt
 # - ./expert_ckpts/essm/essm_fold2.ckpt
-
+ckpts:
+- /public/home/HR/UniPPI_new/outputs/UniAIR_train/log_fold_0/checkpoint/epoch=7-val_loss=2.144.ckpt
+- /public/home/HR/UniPPI_new/outputs/UniAIR_train/log_fold_1/checkpoint/epoch=6-val_loss=3.405.ckpt
+- /public/home/HR/UniPPI_new/outputs/UniAIR_train/log_fold_2/checkpoint/epoch=25-val_loss=2.231.ckpt
 
 run_name: 'test'
 wandb: False
 run_type: test
-num_folds: 1
+num_folds: 3
