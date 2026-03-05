@@ -24,6 +24,14 @@ UniAIR is a modular, multimodal framework for accurate and generalizable predict
 
 Please do not hesitate to contact us or create an issue/PR if you have any questions or suggestions!
 
+
+## Hardware and software requirements
+
+UniAIR can be implemented and reproduced on a standard computer with one modern GPU (e.g., 24GB VRAM).It is supported for Windows and Linux. The package has been tested on the following systems:
+
+Windows: Windows 10 22H2
+Linux: Ubuntu 20.04/CentOS 7.9.2009
+
 ## 🛠️ Installation
 
 **Step 1**. Clone this repository and setup the environment. We recommend you to install the dependencies via the fast package management tool [mamba](https://mamba.readthedocs.io/en/latest/mamba-installation.html) (you can also replace the command 'mamba' with 'conda' to install them). Generally, UniAIR works with Python 3.11.5 and PyTorch version 2.0.1.
@@ -49,6 +57,7 @@ trained_models
 └── RDE.pt
 ```
 
+It will take approximately 15 minutes to download and install the packages with the internet of speed 24 Mbps.
 
 ## 📚 Datasets and model weights for mutation effect on binding affinity prediction
 
@@ -108,7 +117,8 @@ The number of samples of the original dataset is shown below:
 The performance of 3-fold cross validation on UniAIR reaches state-of-the-art, and here is the comparison:
 <img src="./assets/results.png" alt="Results on SKEMPIv2" width="800">
 
-There are 6 options in this framework, including train, test, dms, transfer, transfer_test and pretune, each for different usage of UniAIR.
+There are 6 options in this framework, including train, test, dms, transfer, transfer_test and pretune, each for different usage of UniAIR. Typically, the output of UniAIR is a .csv file, including predictions for each input sample. And on a Single A100 80GB GPU, UniAIR will take approximately 0.666s per sample.
+
 ### Run cross-validation training of a single model on SKEMPIv2
 Training a single model, for example, ESSM.
 ```

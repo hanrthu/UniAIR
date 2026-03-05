@@ -1,4 +1,4 @@
-name: unippi_pytorch2_0_1
+name: unippi_pytorch_env
 channels:
   - pytorch3d
   - pytorch

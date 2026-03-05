@@ -4,7 +4,7 @@ import torch
 from torch import nn
 import sys
 from torch_scatter import scatter_add
-sys.path.append('/home/HR/UniPPI')
+sys.path.append('Your Path to UniAIR')
 from data.transforms.variadic import variadic_to_padded, padded_to_variadic
 from models.encoders.Gearbind.layers.readout import SumReadout, MeanReadout
 from models.encoders.Gearbind.layers.conv import GeometricRelationalGraphConv
