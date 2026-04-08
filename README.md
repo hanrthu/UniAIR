@@ -102,8 +102,8 @@ The number of samples of the original dataset is shown below:
 | Pretrain | PPB-Affinity | ∆G | 2683 | 2683 |
 | Evaluation | SKEMPIv2 | ∆∆G | 5749 | 340 |
 | Evaluation | TCRen bench 1 | Binary | 137137 | 137 |
-| Downstream | HER2 | ∆∆G | 419 | 1 |
-| Downstream | TCR-pMHC Atlas | ∆∆G | 87 | 39 |
+| Independent Test | HER2 | ∆∆G | 419 | 1 |
+| Independent Test | TCR-pMHC Atlas | ∆∆G | 87 | 39 |
 | Downstream | LASSA-25.10C | Escape | 9491 | 1 |
 | Downstream | LASSA-12.1F | Escape | 9473 | 1 |
 | Downstream | LASSA-37.7H | Escape | 9701 | 1 |
@@ -164,6 +164,68 @@ python run.py train --model_config ./config/models/train/UniAIR.yaml --data_conf
 ### Run binary prediction of TCR-pMHC binding specificity
 ```
 python run.py test --model_config ./config/models/train/UniAIR.yaml --data_config ./config/datasets/with_mutant/SKEMPIv2.yaml --run_config ./config/runs/train_basic.yaml                  
+```
+
+## 🧪 Training UniAIR on costumized datasets and models
+Please organize the customized datasets into the following format:
+
+```
+dataset_name
+├── labels
+│   ├── xxx.csv
+├── PDBs
+│   ├── xxx.pdb/.cif
+├── PDBs_mt
+│   ├── xxx.pdb/.cif
+├── splits
+│   ├── dataset_name.csv
+preprocess.py
+```
+
+UniAIR uses a YAML-based dataset configuration file, you can create config/datasets/your_dataset.yaml. This configuration specifies both the metadata fields in the input CSV file and the pre-model transformation pipeline used by UniAIR. The key fields are described as follows.
+
+**dataset_type**: defines the dataset loader. For mutation-effect prediction tasks with Gearbind enabled, use with_mutation_dataset. Else, use wo_mutation_dataset.
+
+**max_length**: maximum sequence length retained for each sample.
+
+**n_neighbors**: number of spatial neighbors used when constructing local geometric graphs.
+
+**cols_label**: target label column(s) used for training. For regression on binding affinity changes, this is typically ['DDG'].
+
+**col_valid_chains**: column containing the subset of chains used for modeling.
+
+**col_chainids**: column specifying all chain identifiers in the structure.
+
+**col_partner**: column defining the interacting partners.
+
+**col_mutation**: column containing mutation annotations.
+
+**col_protein**: column containing protein or complex identifiers.
+
+**col_wt**: column containing the path to the wild-type structure file.
+
+**col_pdb**: column containing the PDB identifier.
+
+**df_path**: path to the processed CSV file containing labels, structure paths and split annotations.
+
+**data_root**: root directory of the dataset.
+
+**batch_size, num_workers, pin_memory**: data-loading parameters that can be adjusted according to available hardware.
+
+**cache_dir**: directory used to store cached processed features for faster reloading.
+
+**loss_types**: learning objective(s). For continuous-value prediction, use regression.
+
+**loss_weights**: relative weight assigned to each loss term.
+
+**transform**: preprocessing pipeline applied to each sample before model input. Please refer to the existing configs for examples.
+
+Meanwhile, users can also implement customized models in ./models/encoders/your_model. We use a modular implementation for each model in this framework, supporting forward_encode() and forward_readout() functions for different usage. After implementation of your own model, you can create your own config/models/train/your_model.yaml.
+
+After the configuration is created, you can train the model by running:
+
+```
+python run.py train --model_config ./config/models/train/your_model --data_config ./config/datasets/your_dataset.yaml --run_config ./config/runs/your_train.yaml  
 ```
 
 
