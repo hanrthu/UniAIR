@@ -1,5 +1,5 @@
 # Generalizable mutation-effect prediction across adaptive immune recognition via unified multimodal framework
-The official repository of UniAIR (for review)
+The official repository of UniAIR
 <p align="left">
   <a href="https://pytorch.org/">
     <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=PyTorch&logoColor=white" />
@@ -91,7 +91,7 @@ The mutant structure can be generated from make_input() function. Place [EvoEF2]
 
 The wild type structure can be generated via ESMfold/Openfold, we provide a ESMfold prediction demo at ./models/folding/ESMfold/ESMfold_pred.py, and the users can modify preprocess.py to generate wild type structures.
 
-We provide the raw and processed datasets for UniAIR, and they can be easily accessed through 🤗Huggingface: [/Jesse7/UniAIR_data](https://huggingface.co/datasets/Jesse7/UniAIR_data/tree/main). Download the corresponding datasets and place them at `./datasets` folder. **We are progressively uploading the datasets in one week since 02/25/2026.**
+We provide the raw and processed datasets for UniAIR, and they can be easily accessed through 🤗Huggingface: [/Jesse7/UniAIR_data](https://huggingface.co/datasets/Jesse7/UniAIR_data/tree/main). Download the corresponding datasets and place them at `./datasets` folder. **We are progressively uploading the datasets.**
 
 The number of samples of the original dataset is shown below:
 
@@ -100,7 +100,7 @@ The number of samples of the original dataset is shown below:
 | Pretrain | SAbDab | - | 14850 | 7749 |
 | Pretrain | STCRDab | - | 452 | 283 |
 | Pretrain | PPB-Affinity | ∆G | 2683 | 2683 |
-| Evaluation | SKEMPIv2 | ∆∆G | 5749 | 340 |
+| Evaluation | SKEMPIv2 | ∆∆G | 5820 | 340 |
 | Evaluation | TCRen bench 1 | Binary | 137137 | 137 |
 | Independent Test | HER2 | ∆∆G | 419 | 1 |
 | Independent Test | TCR-pMHC Atlas | ∆∆G | 87 | 39 |
